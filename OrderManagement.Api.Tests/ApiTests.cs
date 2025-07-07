@@ -13,14 +13,8 @@ using OrderManagement.Api.Models;
 
 namespace OrderManagement.Api.Tests;
 
-public class ApiTests //: IClassFixture<WebApplicationFactory<Program>>
-{
-    //private readonly WebApplicationFactory<Program> _factory;
-
-    //public ApiTests(WebApplicationFactory<Program> factory)
-    //{
-    //    _factory = factory;
-    //}
+public class ApiTests 
+{    
     private readonly IConfiguration _configuration;
     protected OrderManagementController _controller;
     private readonly IOrderManagementService _orderManagementService;
