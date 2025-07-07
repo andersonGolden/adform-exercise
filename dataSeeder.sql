@@ -1,14 +1,4 @@
 -- Seed Data for Order Management System
--- PostgreSQL
-
--- Disable indexes for faster bulk inserts
-DROP INDEX IF EXISTS idx_orders_customer_id;
-DROP INDEX IF EXISTS idx_products_name;
-DROP INDEX IF EXISTS idx_products_category;
-DROP INDEX IF EXISTS idx_customers_details_city;
-DROP INDEX IF EXISTS idx_order_items_order_id;
-DROP INDEX IF EXISTS idx_order_items_product_id;
-DROP INDEX IF EXISTS idx_orders_created_at;
 
 -- Sample data arrays for generation
 DO $$
@@ -100,27 +90,3 @@ BEGIN
     END LOOP;
 END $$;
 
--- Recreate indexes after bulk insert
-CREATE INDEX idx_orders_customer_id ON orders(customer_id);
-CREATE INDEX idx_products_name ON products(name);
-CREATE INDEX idx_products_category ON products(category);
-CREATE INDEX idx_customers_details_city ON customers USING GIN ((details -> 'city'));
-CREATE INDEX idx_order_items_order_id ON order_items(order_id);
-CREATE INDEX idx_order_items_product_id ON order_items(product_id);
-CREATE INDEX idx_orders_created_at ON orders(created_at);
-
--- Analyze tables for query optimization
-ANALYZE customers;
-ANALYZE products;
-ANALYZE orders;
-ANALYZE order_items;
-
--- Display summary
-SELECT 
-    'customers' as table_name, COUNT(*) as row_count FROM customers
-UNION ALL
-SELECT 'products', COUNT(*) FROM products
-UNION ALL
-SELECT 'orders', COUNT(*) FROM orders
-UNION ALL
-SELECT 'order_items', COUNT(*) FROM order_items; 
