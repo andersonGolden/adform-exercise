@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: order-management-db
+    environment:
+      POSTGRES_DB: order_management
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./tableSchema.sql:/docker-entrypoint-initdb.d/01-tableSchema.sql
+      - ./dataSeeder.sql:/docker-entrypoint-initdb.d/02-dataSeeder.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d order_management"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
