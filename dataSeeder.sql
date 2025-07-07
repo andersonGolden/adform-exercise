@@ -56,7 +56,7 @@ BEGIN
         
         order_id := i;
         
-        -- Add 1-100 unique products to each order
+        -- Add 1-100 unique products to each order. need to track used product ids to avoid duplicates that violate unique constraint
         DECLARE
             used_product_ids INTEGER[] := ARRAY[]::INTEGER[];
             num_products INTEGER := 1 + (i % 100);

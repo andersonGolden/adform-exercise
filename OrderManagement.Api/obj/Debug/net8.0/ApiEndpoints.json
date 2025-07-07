@@ -1,0 +1,44 @@
+[
+  {
+    "ContainingType": "OrderManagement.Api.Controllers.OrderManagementController",
+    "Method": "GetInvoice",
+    "RelativePath": "api/OrderManagement/invoice/{orderId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OrderManagement.Api.Controllers.OrderManagementController",
+    "Method": "GetOrdersDistributionReport",
+    "RelativePath": "api/OrderManagement/ordersdistributionreport",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "city",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "sort",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
