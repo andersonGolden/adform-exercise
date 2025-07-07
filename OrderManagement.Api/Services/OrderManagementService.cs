@@ -11,8 +11,7 @@ public class OrderManagementService : IOrderManagementService
 
     public OrderManagementService(IConfiguration configuration)
     {
-        _connectionString = configuration.GetConnectionString("DefaultConnection") 
-            ?? "Host=localhost;Database=order_management;Username=admin;Password=password123";
+        _connectionString = configuration.GetConnectionString("DefaultConnection");
     }
 
     public async Task<IEnumerable<Invoice>> GetInvoiceAsync(int orderId, string? searchTerm = null)

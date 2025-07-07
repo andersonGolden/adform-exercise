@@ -7,11 +7,11 @@ namespace OrderManagement.Api.Controllers;
 [Route("api/[controller]")]
 public class OrderManagementController : ControllerBase
 {
-    private readonly IOrderManagementService _db;
+    private readonly IOrderManagementService _service;
 
-    public OrderManagementController(IOrderManagementService db)
+    public OrderManagementController(IOrderManagementService service)
     {
-        _db = db;
+        _service = service;
     }
 
     /// <summary>
@@ -22,7 +22,7 @@ public class OrderManagementController : ControllerBase
     {
         try
         {
-            var invoice = await _db.GetInvoiceAsync(orderId, search);
+            var invoice = await _service.GetInvoiceAsync(orderId, search);
             return Ok(invoice);
         }
         catch (Exception ex)
@@ -39,7 +39,7 @@ public class OrderManagementController : ControllerBase
     {
         try
         {
-            var report = await _db.GetOrdersDistributionReportAsync(city, sort);
+            var report = await _service.GetOrdersDistributionReportAsync(city, sort);
             return Ok(report);
         }
         catch (Exception ex)
